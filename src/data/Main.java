@@ -10,7 +10,7 @@ package data;
  */
 public class Main {
     public static void main(String[] args) {
-        VentanaPrincipal p = new VentanaPrincipal();
+        Ejercicio1 p = new Ejercicio1();
         
         p.setVisible(true);
     }

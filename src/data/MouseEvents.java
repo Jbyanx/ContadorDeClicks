@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,19 +26,20 @@ import javax.swing.SwingConstants;
  *
  * @author HP
  */
-public class VentanaPrincipal extends JFrame{
+public class MouseEvents extends JFrame{
     private JPanel panel;
     private JLabel label;
     private JTextArea areatexto;
     private JButton boton;
     private JScrollPane barra;
     
-    public VentanaPrincipal(){
+    public MouseEvents(){
         
         iniciarPanel();
         iniciarComponentes();
         //oyenteRaton();
         //eventoMovimientoRaton();
+        //eventoRuedaRaton();
     }
 
     private void iniciarPanel() {
@@ -127,5 +130,20 @@ public class VentanaPrincipal extends JFrame{
         };
         
         panel.addMouseMotionListener(l1);
+    }
+
+    private void eventoRuedaRaton() {
+        MouseWheelListener l1 = new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                if(e.getPreciseWheelRotation() >= 0){
+                     areatexto.append("rueda del raton ABAJO\n");
+                }else{
+                    areatexto.append("rueda del raton ARRIBA\n");
+                }
+            }
+        };
+        
+        panel.addMouseWheelListener(l1);
     }
 }
